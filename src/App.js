@@ -32,7 +32,7 @@ function TutorialButton() {
 export default function App() {
   return (
     <div className="App">
-      <body className="bg-gentle-700 min-h-screen py-10">
+      <div className="bg-gentle-700 min-h-screen py-10">
 
 
 
@@ -47,7 +47,7 @@ export default function App() {
         
 
 
-      </body>
+      </div>
     </div>
   );
 }

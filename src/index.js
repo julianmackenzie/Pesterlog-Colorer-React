@@ -17,15 +17,15 @@ import Tutorial from './pages/Tutorial';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: [<Header />, <App />]
+    element: [<Header key="header" />, <App key="bodyelem" />]
   },
   {
     path: "/pages/Process",
-    element: [<Header />, <Process />],
+    element: [<Header key="header" />, <Process key="bodyelem" />],
   },
   {
     path: "/pages/Tutorial",
-    element: [<Header />, <Tutorial />],
+    element: [<Header key="header" />, <Tutorial key="bodyelem" />],
   },
 ]);
 

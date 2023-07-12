@@ -20,14 +20,14 @@ function QuitButton() {
 export default function Tutorial() {
   return (
     <div className="App">
-      <body className="bg-gentle-700 min-h-screen py-10">
+      <div className="bg-gentle-700 min-h-screen py-10">
 
         <h1>Pesterlog Processing Tutorial</h1>
         
 
         <QuitButton />
 
-      </body>
+      </div>
     </div>
   );
 }
