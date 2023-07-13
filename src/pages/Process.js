@@ -24,6 +24,22 @@ function makeThruple(data) {
 }
 
 
+// Used anytime the pesterlog display needs to be updated
+function updateLogBox() {
+  const logbox = document.getElementById("logbox");
+
+  logbox.innerHTML = "";
+  txtArray.forEach(e => {
+    logbox.innerHTML += e;
+    logbox.innerHTML += "<p>";
+  });
+
+  logbox.style.visibility = "visible";
+  logbox.style.maxHeight = "20rem";
+  logbox.style.marginTop = "2rem";
+}
+
+
 
 
 
@@ -37,24 +53,38 @@ let chardataName = "pesterlogcharacterdata";
 export default function Process() {
 
 
-
+  // INPUT FILE OPENING
+  
   const [openLogSelector, { filesContent: logContent }] = useFilePicker({
     accept: '.txt',
     onFilesSuccessfulySelected: ({ plainFiles, filesContent }) => {  // When the file is successfully opened
       // this callback is called when there were no validation errors
       txtArray = filesContent[0].content.split("\r\n");  // Create array containing individual lines of the Pesterlog
+
+      updateLogBox();
+      
+
+      // Filename prep for export
       let nameMinusTxt = filesContent[0].name.split(".");
       logName = nameMinusTxt[0];
       console.log(txtArray);
     },
   });
 
+
+  function notEmpty(e) {
+    return e !== "";
+  }
+
   const [openCharacterSelector, { filesContent: charContent }] = useFilePicker({
     accept: '.txt',
     onFilesSuccessfulySelected: ({ plainFiles, filesContent }) => {  // When the file is successfully opened
       // this callback is called when there were no validation errors
       let tempArray = filesContent[0].content.split("\r\n");  // Create array containing individual lines of the Pesterlog
-      charArray = tempArray.map(makeThruple);
+      charArray = tempArray.filter(notEmpty).map(makeThruple);
+
+
+      // Filename prep for export
       let nameMinusTxt = filesContent[0].name.split(".");
       chardataName = nameMinusTxt[0];
       console.log(charArray);
@@ -85,10 +115,14 @@ export default function Process() {
 
 
   function exportLog(data) {
-    // TODO: unparse dialogue for export
+    // unparse dialogue for export
+    let toReturn = "";
+    txtArray.forEach(e =>{
+      toReturn += (e + '\n');
+    });
 
     var link=document.createElement('a');
-    link.href = makeTextFile(data);
+    link.href = makeTextFile(toReturn.trim());
     console.log(logName);
     link.download = logName + "_processed.txt";
     link.click();
@@ -96,10 +130,14 @@ export default function Process() {
   }
 
   function exportCharData(data) {
-    // TODO: unparse character data for export  
+    // TODO: unparse character data for export
+    let toReturn = "";
+    charArray.forEach(e =>{
+      toReturn += (e[0] + "|" + e[1] + "|" + e[2] + '\n');
+    });
 
     var link=document.createElement('a');
-    link.href = makeTextFile(data);
+    link.href = makeTextFile(toReturn);
     console.log(logName);
     link.download = chardataName + ".txt";
     link.click();
@@ -119,12 +157,20 @@ export default function Process() {
 
         <div>
           <button className="bg-gentle-600 text-white py-1 px-3 mx-10 text-xl rounded-full border-4 border-gentle-500" onClick={() => openLogSelector()}>Import Pesterlog </button>
+        </div>
+
+
+        <div id="logbox" className="bg-gray-200 overflow-y-scroll invisible">
           
         </div>
 
-        <div className="">
-          <button className="bg-gentle-600 text-white py-1 px-3 my-10 mx-10 text-xl rounded-full border-4 border-gentle-500" onClick={() => openCharacterSelector()}>Import Character Data</button>
-          <button onClick={() => exportCharData(charArray)} className="bg-gentle-600 text-white py-1 px-5 mx-10 text-xl rounded-full border-4 border-gentle-500">Export Character Data</button>
+
+
+
+
+        <div>
+          <button className="bg-mountain-meadow-400 text-white py-1 px-5 my-10 mx-10 text-xl rounded-full border-4 border-mountain-meadow-500" onClick={() => openCharacterSelector()}>Import Character Data</button>
+          <button onClick={() => exportCharData(charArray)} className="bg-red-500 text-white py-1 px-5 mx-10 text-xl rounded-full border-4 border-red-600">Export Character Data</button>
         </div>
 
 
