@@ -1,6 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useFilePicker } from 'use-file-picker';
 import '../App.css';
+import "@melloware/coloris/dist/coloris.css";
+import Coloris from "@melloware/coloris";
+import { useEffect, useState } from 'react';
+
 
 
 
@@ -24,33 +28,22 @@ function makeThruple(data) {
 }
 
 
-// Used anytime the pesterlog display needs to be updated
-function updateLogBox() {
-  const logbox = document.getElementById("logbox");
-
-  logbox.innerHTML = "";
-  txtArray.forEach(e => {
-    logbox.innerHTML += e;
-    logbox.innerHTML += "<p>";
-  });
-
-  logbox.style.visibility = "visible";
-  logbox.style.maxHeight = "20rem";
-  logbox.style.marginTop = "2rem";
-}
 
 
 
-
-
-// Used to hold each line of the imported Pesterlog
-let txtArray = [];
-let charArray = [];
-let logName = "empty";
-let chardataName = "pesterlogcharacterdata";
 
 
 export default function Process() {
+
+  // React-based variable declaration (since these will be updated with the UI)
+  // data arrays  
+  const [txtArray, setTxtArray] = useState([]);
+  const [charArray, setCharArray] = useState([]);
+  // filenames
+  const [logName, setLogName] = useState("empty");
+  const [chardataName, setChardataName] = useState("pesterlogcharacterdata");
+
+  
 
 
   // INPUT FILE OPENING
@@ -59,14 +52,14 @@ export default function Process() {
     accept: '.txt',
     onFilesSuccessfulySelected: ({ plainFiles, filesContent }) => {  // When the file is successfully opened
       // this callback is called when there were no validation errors
-      txtArray = filesContent[0].content.split("\r\n");  // Create array containing individual lines of the Pesterlog
+      setTxtArray(filesContent[0].content.split("\r\n"));  // Create array containing individual lines of the Pesterlog
 
-      updateLogBox();
+      //updateLogBox();
       
 
       // Filename prep for export
       let nameMinusTxt = filesContent[0].name.split(".");
-      logName = nameMinusTxt[0];
+      setLogName(nameMinusTxt[0]);
       console.log(txtArray);
     },
   });
@@ -76,17 +69,21 @@ export default function Process() {
     return e !== "";
   }
 
+
+
+  // OUTPUT FILE OPENING
+
   const [openCharacterSelector, { filesContent: charContent }] = useFilePicker({
     accept: '.txt',
     onFilesSuccessfulySelected: ({ plainFiles, filesContent }) => {  // When the file is successfully opened
       // this callback is called when there were no validation errors
       let tempArray = filesContent[0].content.split("\r\n");  // Create array containing individual lines of the Pesterlog
-      charArray = tempArray.filter(notEmpty).map(makeThruple);
+      setCharArray(tempArray.filter(notEmpty).map(makeThruple));
 
 
       // Filename prep for export
       let nameMinusTxt = filesContent[0].name.split(".");
-      chardataName = nameMinusTxt[0];
+      setChardataName(nameMinusTxt[0]);
       console.log(charArray);
     },
   });
@@ -130,7 +127,7 @@ export default function Process() {
   }
 
   function exportCharData(data) {
-    // TODO: unparse character data for export
+    // unparse character data for export
     let toReturn = "";
     charArray.forEach(e =>{
       toReturn += (e[0] + "|" + e[1] + "|" + e[2] + '\n');
@@ -147,7 +144,12 @@ export default function Process() {
   // END @USELESSCODE'S CODE
 
 
-
+  // useEffect initializes the color picker just once
+  useEffect(() => {
+    Coloris.init();
+    Coloris({el: "#coloris", alpha: false, themeMode: 'dark'});
+  }, [])
+  
   
 
 
@@ -155,15 +157,23 @@ export default function Process() {
     <div className="App">
       <div className="bg-gentle-700 min-h-screen py-10">
 
+
+
+        
+
+
+
         <div>
           <button className="bg-gentle-600 text-white py-1 px-3 mx-10 text-xl rounded-full border-4 border-gentle-500" onClick={() => openLogSelector()}>Import Pesterlog </button>
         </div>
 
 
-        <div id="logbox" className="bg-gray-200 overflow-y-scroll invisible">
-          
-        </div>
 
+        {txtArray.length > 0 && (
+          <div id="logbox" className="bg-gray-200 mt-8 max-h-80 overflow-y-scroll" >
+          {txtArray.map((line, index) => (<p key={index}>{line}</p>))}
+          </div>
+        )}
 
 
 
@@ -173,9 +183,18 @@ export default function Process() {
           <button onClick={() => exportCharData(charArray)} className="bg-red-500 text-white py-1 px-5 mx-10 text-xl rounded-full border-4 border-red-600">Export Character Data</button>
         </div>
 
+        <div>
+          <input id="taginput" type="text" placeholder="Tag" className="mx-3 w-10" />
+          <input type="text" placeholder="Color Hex" className="mx-3" data-coloris />
+          <input id="nameinput" placeholder="chumHandle" type="text" className="mx-3" />
+        </div>
 
         <div>
-          <button onClick={() => exportLog(txtArray)} className="bg-gentle-600 text-white py-1 px-3 text-xl rounded-full border-4 border-gentle-500">Export Pesterlog</button>
+          <button className="bg-gentle-600 text-white py-1 px-3 my-10 text-xl rounded-full border-4 border-gentle-500">Add Character</button>
+        </div>
+
+        <div>
+          <button onClick={() => exportLog(txtArray)} className="bg-gentle-600 text-white py-1 px-3 my-10 text-xl rounded-full border-4 border-gentle-500">Export Pesterlog</button>
         </div>
 
 
