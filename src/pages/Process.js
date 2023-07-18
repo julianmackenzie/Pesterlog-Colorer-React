@@ -113,16 +113,28 @@ export default function Process() {
     // unparse dialogue for export
     let toReturn = "";
     txtArray.forEach(e =>{
-      toReturn += (e + '\n');
+      let prefix = "";
+      let suffix = "";
+      charArray.forEach(c =>{
+        if (c[0] === e.slice(0,2)) {
+          prefix = "[color=" + c[1] + "]";
+          suffix = "[/color]"
+        }
+      });
+
+      toReturn += (prefix + e + suffix + '\n');
     });
 
     var link=document.createElement('a');
     link.href = makeTextFile(toReturn.trim());
-    console.log(logName);
     link.download = logName + "_processed.txt";
     link.click();
 
   }
+
+
+
+
 
   function exportCharData(data) {
     // unparse character data for export
@@ -135,7 +147,6 @@ export default function Process() {
 
     var link=document.createElement('a');
     link.href = makeTextFile(toReturn);
-    console.log(logName);
     link.download = chardataName + ".txt";
     link.click();
 
@@ -154,7 +165,7 @@ export default function Process() {
 
       let tempArray = [taginput.value, colorinput.value, nameinput.value];
 
-      charArray.push(tempArray);
+      setCharArray([...charArray, tempArray]);  // Make new array w contents of old array plus new item
 
       taginput.value = "";
       colorinput.value = "";
@@ -209,9 +220,9 @@ export default function Process() {
         </div>
 
         <div>
-          <input id="taginput" type="text" placeholder="Tag" className="mx-3 w-10" maxLength={2} />
-          <input id="colorinput" type="text" placeholder="Color Hex" className="mx-3" maxLength={7} data-coloris />
-          <input id="nameinput" placeholder="chumHandle" type="text" className="mx-3" />
+          <input id="taginput" type="text" placeholder="Tag" className="mx-3 w-7 text-center rounded-md" maxLength={2} />
+          <input id="colorinput" type="text" placeholder="Color Hex" className="mx-3 w-28 pl-1 rounded-md" maxLength={7} data-coloris />
+          <input id="nameinput" placeholder="chumHandle" type="text" className="mx-3 px-1 rounded-md" />
         </div>
 
         <div>
@@ -225,7 +236,9 @@ export default function Process() {
 
         {charArray.length > 0 && (
           <div id="charbox" className="bg-gray-200 mt-8 max-h-80 overflow-y-scroll" >
-          {charArray.map((line, index) => (<p key={index} color="green-500">{line[0] + " " + line[1]}</p>))}
+            {charArray.map((line, index) => (
+              <p style={{color: line[1]}} key={index}>{"["+ line[0] + "]" + " " + line[2]} <input type="checkbox" defaultChecked="true" /></p>
+            ))}
           </div>
         )}
 
