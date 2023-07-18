@@ -54,8 +54,6 @@ export default function Process() {
       // this callback is called when there were no validation errors
       setTxtArray(filesContent[0].content.split("\r\n"));  // Create array containing individual lines of the Pesterlog
 
-      //updateLogBox();
-      
 
       // Filename prep for export
       let nameMinusTxt = filesContent[0].name.split(".");
@@ -70,8 +68,6 @@ export default function Process() {
   }
 
 
-
-  // OUTPUT FILE OPENING
 
   const [openCharacterSelector, { filesContent: charContent }] = useFilePicker({
     accept: '.txt',
@@ -89,6 +85,8 @@ export default function Process() {
   });
 
 
+
+  // OUTPUT FILE OPENING
 
   // @USELESSCODE'S CODE
   // https://jsfiddle.net/UselessCode/qm5AG/
@@ -133,6 +131,8 @@ export default function Process() {
       toReturn += (e[0] + "|" + e[1] + "|" + e[2] + '\n');
     });
 
+    if (toReturn.length < 1) return;
+
     var link=document.createElement('a');
     link.href = makeTextFile(toReturn);
     console.log(logName);
@@ -142,6 +142,31 @@ export default function Process() {
   }
 
   // END @USELESSCODE'S CODE
+
+
+
+
+    function addCharacter(taginput, colorinput, nameinput, charArray) {
+      if (taginput.value.length !== 2 || colorinput.value.length !== 7 || nameinput.value.length < 1) {
+        console.log("Couldn't add character, not enough data.");
+        return;
+      }
+
+      let tempArray = [taginput.value, colorinput.value, nameinput.value];
+
+      charArray.push(tempArray);
+
+      taginput.value = "";
+      colorinput.value = "";
+      nameinput.value = "";
+
+    }
+
+
+
+
+
+
 
 
   // useEffect initializes the color picker just once
@@ -184,14 +209,27 @@ export default function Process() {
         </div>
 
         <div>
-          <input id="taginput" type="text" placeholder="Tag" className="mx-3 w-10" />
-          <input type="text" placeholder="Color Hex" className="mx-3" data-coloris />
+          <input id="taginput" type="text" placeholder="Tag" className="mx-3 w-10" maxLength={2} />
+          <input id="colorinput" type="text" placeholder="Color Hex" className="mx-3" maxLength={7} data-coloris />
           <input id="nameinput" placeholder="chumHandle" type="text" className="mx-3" />
         </div>
 
         <div>
-          <button className="bg-gentle-600 text-white py-1 px-3 my-10 text-xl rounded-full border-4 border-gentle-500">Add Character</button>
+          <button
+            onClick={() => addCharacter(document.getElementById("taginput"), document.getElementById("colorinput"), document.getElementById("nameinput"), charArray)}
+            className="bg-gentle-600 text-white py-1 px-3 mt-10 text-xl rounded-full border-4 border-gentle-500">Add Character
+          </button>
         </div>
+
+
+
+        {charArray.length > 0 && (
+          <div id="charbox" className="bg-gray-200 mt-8 max-h-80 overflow-y-scroll" >
+          {charArray.map((line, index) => (<p key={index} color="green-500">{line[0] + " " + line[1]}</p>))}
+          </div>
+        )}
+
+
 
         <div>
           <button onClick={() => exportLog(txtArray)} className="bg-gentle-600 text-white py-1 px-3 my-10 text-xl rounded-full border-4 border-gentle-500">Export Pesterlog</button>

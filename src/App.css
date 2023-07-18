@@ -31,8 +31,8 @@
 }
 
 
-.App-link {
-  color: #61dafb;
+
+#logbox {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
 }
-
-
