@@ -43,7 +43,36 @@ export default function Process() {
   const [logName, setLogName] = useState("empty");
   const [chardataName, setChardataName] = useState("pesterlogcharacterdata");
 
+  const [coloredTxtArray, setColoredTxtArray] = useState([]);  // constantly-changing copy of txtArray displayed to the user as a preview
+  const [characterColor, setCharacterColor] = useState({});
+
   
+
+  
+
+
+
+  // Used to copy the contents of txtArray into coloredTxtArray
+  useEffect(() => {
+
+    setColoredTxtArray(txtArray.map((line) => (
+      {"character": line.slice(0,2), "dialogue": line}
+    )));
+
+  }, [txtArray]);
+
+
+  // Used to add color to the log from an imported character data file
+  useEffect(() => {
+    
+    let newCharacterColor = {...characterColor};
+    charArray.forEach((e) => {
+      console.log(e[0], " => ", e[1]);
+      newCharacterColor[e[0]] = e[1];
+    });
+    setCharacterColor(newCharacterColor);
+
+  }, [chardataName]);
 
 
   // INPUT FILE OPENING
@@ -52,20 +81,24 @@ export default function Process() {
     accept: '.txt',
     onFilesSuccessfulySelected: ({ plainFiles, filesContent }) => {  // When the file is successfully opened
       // this callback is called when there were no validation errors
-      setTxtArray(filesContent[0].content.split("\r\n"));  // Create array containing individual lines of the Pesterlog
-
-
       // Filename prep for export
       let nameMinusTxt = filesContent[0].name.split(".");
       setLogName(nameMinusTxt[0]);
-      console.log(txtArray);
+      setTxtArray(filesContent[0].content.split("\r\n"));  // Create array containing individual lines of the Pesterlog
+      
     },
   });
+  
 
 
   function notEmpty(e) {
     return e !== "";
   }
+
+
+
+  
+  
 
 
 
@@ -77,6 +110,8 @@ export default function Process() {
       setCharArray(tempArray.filter(notEmpty).map(makeThruple));
 
 
+      
+      
       // Filename prep for export
       let nameMinusTxt = filesContent[0].name.split(".");
       setChardataName(nameMinusTxt[0]);
@@ -163,10 +198,19 @@ export default function Process() {
         return;
       }
 
+      // add new data to character data array
       let tempArray = [taginput.value, colorinput.value, nameinput.value];
-
       setCharArray([...charArray, tempArray]);  // Make new array w contents of old array plus new item
 
+      
+      // assemble character key and color value for line color fetching
+      let newCharacterColor = {...characterColor};
+      newCharacterColor[taginput.value] = colorinput.value;
+      setCharacterColor(newCharacterColor);
+
+
+
+      // reset inputs
       taginput.value = "";
       colorinput.value = "";
       nameinput.value = "";
@@ -185,7 +229,6 @@ export default function Process() {
     Coloris.init();
     Coloris({el: "#coloris", alpha: false, themeMode: 'dark'});
   }, [])
-  
   
 
 
@@ -207,11 +250,13 @@ export default function Process() {
 
         {txtArray.length > 0 && (
           <div id="logbox" className="bg-gray-200 mt-8 max-h-80 overflow-y-scroll" >
-          {txtArray.map((line, index) => (<p key={index}>{line}</p>))}
+            {coloredTxtArray.map((line, index) => (
+            <p key={index} style={{color: characterColor[(line.character)] ?? "#000"}}>{line.dialogue}</p>
+            ))}
           </div>
         )}
 
-
+        
 
 
         <div>
@@ -237,7 +282,7 @@ export default function Process() {
         {charArray.length > 0 && (
           <div id="charbox" className="bg-gray-200 mt-8 max-h-80 overflow-y-scroll" >
             {charArray.map((line, index) => (
-              <p style={{color: line[1]}} key={index}>{"["+ line[0] + "]" + " " + line[2]} <input type="checkbox" defaultChecked="true" /></p>
+              <p style={{color: line[1]}} key={index}>{"["+ line[0] + "] " + line[2]} <input type="checkbox" defaultChecked="true" /></p>
             ))}
           </div>
         )}
