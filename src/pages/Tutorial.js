@@ -23,6 +23,7 @@ export default function Tutorial() {
       <div className="bg-gentle-700 min-h-screen py-10">
 
         <h1>Pesterlog Processing Tutorial</h1>
+
         
 
         <QuitButton />

@@ -67,7 +67,6 @@ export default function Process() {
     
     let newCharacterColor = {...characterColor};
     charArray.forEach((e) => {
-      console.log(e[0], " => ", e[1]);
       newCharacterColor[e[0]] = e[1];
     });
     setCharacterColor(newCharacterColor);
@@ -115,7 +114,6 @@ export default function Process() {
       // Filename prep for export
       let nameMinusTxt = filesContent[0].name.split(".");
       setChardataName(nameMinusTxt[0]);
-      console.log(charArray);
     },
   });
 
@@ -194,7 +192,11 @@ export default function Process() {
 
     function addCharacter(taginput, colorinput, nameinput, charArray) {
       if (taginput.value.length !== 2 || colorinput.value.length !== 7 || nameinput.value.length < 1) {
+        
+        // TODO: MESSAGE THE USER
+        
         console.log("Couldn't add character, not enough data.");
+
         return;
       }
 
