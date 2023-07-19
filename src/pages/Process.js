@@ -1,13 +1,17 @@
-import { Link } from 'react-router-dom';
-import { useFilePicker } from 'use-file-picker';
-import '../App.css';
-import "@melloware/coloris/dist/coloris.css";
-import Coloris from "@melloware/coloris";
 import { useEffect, useState } from 'react';
 
+import { Link } from 'react-router-dom';
+
+import { useFilePicker } from 'use-file-picker';
+
+import "@melloware/coloris/dist/coloris.css";
+import Coloris from "@melloware/coloris";
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-
+import '../App.css';
 
 
 
@@ -48,7 +52,38 @@ export default function Process() {
 
   
 
-  
+  const notifyTag = () => toast.error("Tag is not in proper format (XX)!", {
+    position: "bottom-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
+
+  const notifyColor = () => toast.error("Color has not been chosen!", {
+    position: "bottom-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
+
+  const notifyName = () => toast.error("Chumhandle has not been chosen!", {
+    position: "bottom-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
 
 
 
@@ -65,13 +100,18 @@ export default function Process() {
   // Used to add color to the log from an imported character data file
   useEffect(() => {
     
-    let newCharacterColor = {...characterColor};
+    let newCharacterColor = {...characterColor};  // copy map (tag => color)
     charArray.forEach((e) => {
-      newCharacterColor[e[0]] = e[1];
+      newCharacterColor[e[0]] = e[1];  // add new key/value pair
     });
-    setCharacterColor(newCharacterColor);
+    setCharacterColor(newCharacterColor);  // update map
 
-  }, [chardataName]);
+  }, [chardataName]);  // watching filename means this happens only on new data import
+
+
+
+
+
 
 
   // INPUT FILE OPENING
@@ -90,16 +130,12 @@ export default function Process() {
   
 
 
+
+
+  // Helper function for importing character data in openCharacterSelector
   function notEmpty(e) {
     return e !== "";
   }
-
-
-
-  
-  
-
-
 
   const [openCharacterSelector, { filesContent: charContent }] = useFilePicker({
     accept: '.txt',
@@ -108,8 +144,6 @@ export default function Process() {
       let tempArray = filesContent[0].content.split("\r\n");  // Create array containing individual lines of the Pesterlog
       setCharArray(tempArray.filter(notEmpty).map(makeThruple));
 
-
-      
       
       // Filename prep for export
       let nameMinusTxt = filesContent[0].name.split(".");
@@ -203,12 +237,16 @@ export default function Process() {
 
 
     function addCharacter(taginput, colorinput, nameinput, charArray) {
-      if (taginput.value.length !== 2 || colorinput.value.length !== 7 || nameinput.value.length < 1) {
-        
-        // TODO: MESSAGE THE USER
-        
-        console.log("Couldn't add character, not enough data.");
-
+      if (taginput.value.length !== 2) {
+        notifyTag();
+        return;
+      }
+      if (colorinput.value.length !== 7) {
+        notifyColor();
+        return;
+      }
+      if (nameinput.value.length < 1) {
+        notifyName();
         return;
       }
 
@@ -251,7 +289,18 @@ export default function Process() {
       <div className="bg-gentle-700 min-h-screen py-10">
 
 
-
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
         
 
 
