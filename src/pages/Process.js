@@ -145,13 +145,25 @@ export default function Process() {
   function exportLog(data) {
     // unparse dialogue for export
     let toReturn = "";
-    txtArray.forEach(e =>{
+    txtArray.forEach(e => {
+
+      // For headers and footers
+      if (e.slice(0,2) === "--") {
+        charArray.forEach(c => {
+          let tagindex = e.indexOf("[" + c[0] + "]");
+          if (tagindex !== -1) {
+            e = e.slice(0, tagindex) + "[color=" + c[1] + "][" + c[0] + "][/color]" + e.slice(tagindex+4);
+          }
+        });
+      } 
+
+      // For lines of dialogue
       let prefix = "";
       let suffix = "";
-      charArray.forEach(c =>{
+      charArray.forEach(c => {
         if (c[0] === e.slice(0,2)) {
           prefix = "[color=" + c[1] + "]";
-          suffix = "[/color]"
+          suffix = "[/color]";
         }
       });
 
@@ -267,17 +279,16 @@ export default function Process() {
         </div>
 
         <div>
-          <input id="taginput" type="text" placeholder="Tag" className="mx-3 w-7 text-center rounded-md" maxLength={2} />
-          <input id="colorinput" type="text" placeholder="Color Hex" className="mx-3 w-28 pl-1 rounded-md" maxLength={7} data-coloris />
-          <input id="nameinput" placeholder="chumHandle" type="text" className="mx-3 px-1 rounded-md" />
-        </div>
-
-        <div>
+          <input id="taginput" type="text" placeholder="Tag" className="mx-2 w-7 text-center rounded-md" maxLength={2} />
+          <input id="colorinput" type="text" placeholder="Color Hex" className="mx-2 w-28 pl-1 rounded-md" maxLength={7} data-coloris />
+          <input id="nameinput" placeholder="chumHandle" type="text" className="mx-2 px-1 rounded-md" />
           <button
             onClick={() => addCharacter(document.getElementById("taginput"), document.getElementById("colorinput"), document.getElementById("nameinput"), charArray)}
-            className="bg-gentle-600 text-white py-1 px-3 mt-10 text-xl rounded-full border-4 border-gentle-500">Add Character
+            className="bg-gentle-600 text-white px-2 mx-4 text-xl rounded-full border-4 border-gentle-500">Add Character
           </button>
         </div>
+
+
 
 
 
