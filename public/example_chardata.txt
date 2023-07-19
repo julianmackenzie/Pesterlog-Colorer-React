@@ -1,0 +1,4 @@
+TT|#600505|traditionalTerror
+GT|#AF59FF|gentleTranscendent
+TG|#01C7FC|tomboyGangster
+GG|#4E7A27|guiltlessGraffiti

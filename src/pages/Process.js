@@ -219,7 +219,7 @@ export default function Process() {
     // unparse character data for export
     let toReturn = "";
     charArray.forEach(e =>{
-      toReturn += (e[0] + "|" + e[1] + "|" + e[2] + '\n');
+      toReturn += (e[0] + "|" + e[1] + "|" + e[2] + '\r\n');
     });
 
     if (toReturn.length < 1) return;
