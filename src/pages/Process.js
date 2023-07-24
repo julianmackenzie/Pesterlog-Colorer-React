@@ -85,6 +85,17 @@ export default function Process() {
     theme: "dark",
   });
 
+  const notifyDuplicate = () => toast.error("Cannot add a duplicate Tag!", {
+    position: "bottom-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  });
+
 
 
   // Used to copy the contents of txtArray into coloredTxtArray
@@ -250,6 +261,23 @@ export default function Process() {
         return;
       }
 
+
+      // Preventing duplicates
+      // Future TODO: handling for duplicates and choosing between duplicate characters
+      let containedDuplicate = false;
+
+      charArray.forEach(e => {
+        if (e[0] === taginput.value) {
+          notifyDuplicate();
+          containedDuplicate = true;
+        }
+      });
+
+      if (containedDuplicate) return;
+
+
+
+
       // add new data to character data array
       let tempArray = [taginput.value, colorinput.value, nameinput.value];
       setCharArray([...charArray, tempArray]);  // Make new array w contents of old array plus new item
@@ -344,7 +372,7 @@ export default function Process() {
         {charArray.length > 0 && (
           <div id="charbox" className="bg-gray-200 mt-8 max-h-80 overflow-y-scroll" >
             {charArray.map((line, index) => (
-              <p style={{color: line[1]}} key={index}>{"["+ line[0] + "] " + line[2]} <input type="checkbox" defaultChecked="true" /></p>
+              <p style={{color: line[1]}} key={index}>{"["+ line[0] + "] " + line[2]}</p>
             ))}
           </div>
         )}

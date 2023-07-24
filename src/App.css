@@ -7,6 +7,14 @@
   text-align: center;
 }
 
+.App h1 {
+  font-size: xx-large;
+}
+
+.App h2 {
+  font-size: large;
+  text-decoration: underline;
+}
 
 .App-logo {
   height: 40vmin;
@@ -28,6 +36,7 @@
 
 .App-header h2 {
   font-size: calc(8px + 2vmin);
+  text-decoration: none;
 }
 
 

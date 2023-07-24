@@ -39,39 +39,56 @@ cout << endl << endl << endl << endl << endl << endl << "--- PESTERLOG FORMATTIN
 export default function Tutorial() {
   return (
     <div className="App">
-      <div className="bg-gentle-700 min-h-screen py-10">
+      <div className="bg-gentle-700 min-h-screen py-5 text-white">
 
         <h1>Pesterlog Processing Tutorial</h1>
 
-        <h1>Input log requirements:</h1>
-
-        <h2>
-          <p>The .txt file that you provide should follow Homestuck's pesterlog format.</p>
-          <p>Here is a template of how this should look:</p>
-        </h2>
+        <h2>Input log requirements:</h2>
 
         <h3>
-          <p>-- firstHandle [XX] began pestering secondHandle [YY] --</p>
-          <p>XX: this is the first line of dialog</p>
-          <p>XX: this is the second line of dialog</p>
-          <p>YY: this is the third line of dialog</p>
-          <p>XX: this is the fourth line of dialog</p>
-          <p>-- firstHandle [XX] ceased pestering secondHandle [YY] --</p>
+          <p>The .txt file that you provide should follow Homestuck's pesterlog format.</p>
+          <p>Here is a template of how this should look:</p>
         </h3>
 
-        <h2>
-          <p>"firstHandle" and "secondHandle" are the Chumhandles of your characters. These can be anything but the Tag will generally be its abbreviation.</p>
-          <p>Each line of dialog needs to begin with a Tag, and all characters in a log must have a unique Tag.</p>
-          <p>If two characters have the same abbreviation, before processing, choose a character and replace all instances of their Tag in the .txt with a unique placeholder Tag, then change it back after processing.</p>
-          <p>The header and footer can contain anything as long as they begin with "--" and any Tags are in format "[XX]".</p>
-        </h2>
 
-
-        <a href="/example_log.txt" download>Download Example Input Log</a>
-        <a href="/example_chardata.txt" download>Download Example Input Character Data</a>
-        
+        <div id="logbox" className="bg-gray-200 text-black my-2">
+            <p>-- firstHandle [XX] began pestering secondHandle [YY] --</p>
+            <p>XX: this is the first line of dialog</p>
+            <p>XX: this is the second line of dialog</p>
+            <p>YY: this is the third line of dialog</p>
+            <p>XX: this is the fourth line of dialog</p>
+            <p>-- firstHandle [XX] ceased pestering secondHandle [YY] --</p>
+        </div>
 
         
+        <div>
+          <h3>
+            <p>"firstHandle" and "secondHandle" are the Chumhandles of your characters. These can be anything but the Tag will generally be its abbreviation.</p>
+            <p>Each line of dialog needs to begin with a Tag, and all characters in a log must have a unique Tag.</p>
+            <p>If two characters have the same abbreviation, before processing, choose a character and replace all instances of their Tag in the .txt with a unique placeholder Tag, then change it back after processing.</p>
+            <p>The header and footer can contain anything as long as they begin with "--" and any Tags are in format "[XX]".</p>
+          </h3>
+        </div>
+        
+
+
+  
+
+        
+        <a href="/example_log.txt" download>
+          <button className="bg-mountain-meadow-400 text-white py-1 px-5 my-10 mx-10 text-xl rounded-full border-4 border-mountain-meadow-500">
+            Download Example Input Log
+          </button>
+        </a>
+
+        <a href="/example_chardata.txt" download>
+          <button className="bg-mountain-meadow-400 text-white py-1 px-5 my-10 mx-10 text-xl rounded-full border-4 border-mountain-meadow-500">
+            Download Example Input Character Data
+          </button>
+        </a>
+        
+
+
 
         <QuitButton />
 
