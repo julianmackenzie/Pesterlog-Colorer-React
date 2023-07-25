@@ -20,7 +20,7 @@ import '../App.css';
 function QuitButton() {
   return (
     <Link to='../'>
-      <button className="bg-gentle-600 text-white py-4 px-10 my-20 text-xl rounded-full border-4 border-gentle-500">Quit Processing</button>
+      <button className="bg-gentle-600 text-white py-4 px-10 my-16 text-xl rounded-full border-4 border-gentle-500">Quit Processing</button>
     </Link>
   );
 }
@@ -356,9 +356,12 @@ export default function Process() {
         </div>
 
         <div>
-          <input id="taginput" type="text" placeholder="Tag" className="mx-2 w-7 text-center rounded-md" maxLength={2} />
-          <input id="colorinput" type="text" placeholder="Color Hex" className="mx-2 w-28 pl-1 rounded-md" maxLength={7} data-coloris />
-          <input id="nameinput" placeholder="chumHandle" type="text" className="mx-2 px-1 rounded-md" />
+          <div className="inline-block bg-gentle-700 p-1 rounded-2xl border-4 border-gentle-500">
+            <input id="taginput" type="text" placeholder="Tag" className="mr-1 w-8 text-center rounded-lg" maxLength={2} />
+            <input id="colorinput" type="text" placeholder="Color Hex" className="mx-1 w-28 pl-1 rounded-lg" maxLength={7} data-coloris />
+            <input id="nameinput" placeholder="chumHandle" type="text" className="ml-1 px-1 rounded-lg" />
+          </div>
+          
           <button
             onClick={() => addCharacter(document.getElementById("taginput"), document.getElementById("colorinput"), document.getElementById("nameinput"), charArray)}
             className="bg-gentle-600 text-white px-2 mx-4 text-xl rounded-full border-4 border-gentle-500">Add Character
