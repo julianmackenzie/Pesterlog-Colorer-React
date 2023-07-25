@@ -308,10 +308,7 @@ export default function Process() {
         dialogue = dialogue.replace(bracketTag, "<span style='color: " + characterColor[e[0]] + "'>" + bracketTag + "</span>");
       });
 
-      
-
       return(dialogue);
-
     }
 
 
@@ -329,7 +326,7 @@ export default function Process() {
 
   return (
     <div className="App">
-      <div className="bg-gentle-700 min-h-screen py-10">
+      <div className="bg-gentle-700 py-10">
 
 
         <ToastContainer

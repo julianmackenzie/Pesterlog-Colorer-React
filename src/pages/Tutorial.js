@@ -39,7 +39,7 @@ cout << endl << endl << endl << endl << endl << endl << "--- PESTERLOG FORMATTIN
 export default function Tutorial() {
   return (
     <div className="App">
-      <div className="bg-gentle-700 min-h-screen pt-5 pb-20 text-white">
+      <div className="bg-gentle-700 pt-5 pb-20 text-white">
 
         <h1>Pesterlog Processing Tutorial</h1>
 
