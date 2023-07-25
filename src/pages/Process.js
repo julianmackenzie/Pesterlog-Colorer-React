@@ -301,6 +301,21 @@ export default function Process() {
 
 
 
+    function processHeader(dialogue) {
+
+      charArray.forEach(e => {
+        let bracketTag = "[" + e[0] + "]";
+        dialogue = dialogue.replace(bracketTag, "<span style='color: " + characterColor[e[0]] + "'>" + bracketTag + "</span>");
+      });
+
+      
+
+      return(dialogue);
+
+    }
+
+
+
 
 
 
@@ -342,7 +357,7 @@ export default function Process() {
         {txtArray.length > 0 && (
           <div id="logbox" className="bg-gray-200 mt-8 max-h-80 overflow-y-scroll" >
             {coloredTxtArray.map((line, index) => (
-            <p key={index} style={{color: characterColor[(line.character)] ?? "#000"}}>{line.dialogue}</p>
+            <p key={index} style={{color: characterColor[(line.character)] ?? "#000"}} dangerouslySetInnerHTML={{__html: processHeader(line.dialogue)}} />
             ))}
           </div>
         )}

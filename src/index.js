@@ -11,21 +11,22 @@ import {
 import Header from './components/Header';
 import Process from './pages/Process';
 import Tutorial from './pages/Tutorial';
+import Version from './components/Version';
 
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: [<Header key="header" />, <App key="bodyelem" />]
+    element: [<Header key="header" />, <App key="bodyelem" />, <Version key="version" />]
   },
   {
     path: "/pages/Process",
-    element: [<Header key="header" />, <Process key="bodyelem" />],
+    element: [<Header key="header" />, <Process key="bodyelem" />, <Version key="version" />],
   },
   {
     path: "/pages/Tutorial",
-    element: [<Header key="header" />, <Tutorial key="bodyelem" />],
+    element: [<Header key="header" />, <Tutorial key="bodyelem" />, <Version key="version" />],
   },
 ]);
 

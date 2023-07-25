@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 
+body {background-color: #2B234A;}
+
+
 .App {
   text-align: center;
 }
@@ -44,4 +47,51 @@
 #logbox {
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
+}
+
+
+
+
+
+
+
+/*
+
+  Popup styling
+
+*/
+
+
+.versionbutton {
+  text-shadow: 2px 2px 2px #000000;
+}
+
+
+.modal {
+  color: white;
+}
+
+.modal > .popupclose {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 6px 8px 10px 8px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: xx-large;
+}
+
+.modal > .popupheader {
+  width: 100%;
+  font-weight: bold;
+  font-size: x-large;
+  border-bottom: 1px solid rgb(255, 255, 255);
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.modal > .popupcontent {
+  width: 100%;
+  padding: 10px 5px;
 }
