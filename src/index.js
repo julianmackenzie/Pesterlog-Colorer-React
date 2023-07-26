@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     element: [<Header key="header" />, <Tutorial key="bodyelem" />, <Version key="version" />],
   },
 ], {
-  basename: basename
+  basename: basename,
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

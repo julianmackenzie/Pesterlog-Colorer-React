@@ -1,7 +1,7 @@
 {
   "name": "pesterlog-colorer",
   "version": "1.0.0",
-  "homepage": "https://julianmackenzie.github.io/Pesterlog-Colorer-React",
+  "homepage": "https://julianmackenzie.github.io/Pesterlog-Colorer-React/",
   "private": true,
   "dependencies": {
     "@melloware/coloris": "^0.21.0",
