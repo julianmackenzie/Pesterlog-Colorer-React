@@ -212,7 +212,7 @@ export default function Process() {
         }
       });
 
-      toReturn += (prefix + e + suffix + '\n');
+      toReturn += (prefix + e + suffix + '\r\n');
     });
 
     var link=document.createElement('a');

@@ -106,6 +106,7 @@ export default function Tutorial() {
             <p>Each line of dialog needs to begin with a Tag, and all characters in a log must have a unique Tag.</p>
             <p>If two characters have the same abbreviation, before processing, choose a character and replace all instances of their Tag in the .txt with a unique placeholder Tag, then change it back after processing.</p>
             <p>The header and footer can contain anything as long as they begin with "--" and any Tags are in format "[XX]".</p>
+            <p>Each line technically ends with a "\r\n". If your import refuses to split into multiple lines, this may be why. Adding the \r should fix it.</p>
           </h3>
         </div>
         
@@ -134,6 +135,7 @@ export default function Tutorial() {
           <h3>
             <p>where "XX" is a unique two-character capitalized Tag, #FFFFFF is any valid hex color code, and chumHandle is the name of the character. Each character should be on its own line of the .txt file.</p>
             <p>Characters can easily be added to a preexisting character data file by importing character data, using this program's character adding tool, and exporting for later use.</p>
+            <p>Each line technically ends with a "\r\n". If your import refuses to split into multiple lines, this may be why. Adding the \r should fix it.</p>
           </h3>
         </div>
 
