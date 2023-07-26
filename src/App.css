@@ -36,3 +36,95 @@
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
 }
+<<<<<<< Updated upstream
+=======
+
+
+
+
+
+
+
+/*
+
+  Popup styling
+
+*/
+
+
+.versionbutton {
+  text-shadow: 1.1px 1.1px 1px black, 1.5px 1.5px 1px black, 2px 2px 1px black;
+  
+}
+
+.popup-content {
+  background: transparent !important;
+  padding: 0px !important;
+  border: transparent !important;
+  width: fit-content !important;
+  max-width: 90% !important;
+}
+
+.modal {
+  color: white;
+}
+
+.modal > .popupclose {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 6px 7px 11px 8px;
+  line-height: 20px;
+  right: -11px;
+  top: -11px;
+  font-size: xx-large;
+  font-weight: 300;
+}
+
+.modal > .popupheader {
+  width: 100%;
+  font-weight: bold;
+  font-size: x-large;
+  border-bottom: 1px solid rgb(255, 255, 255);
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+
+.modal > .popupheader > .versionmenubutton {
+  margin-top: 15px;
+  line-height: 75%;
+}
+
+
+.versionmenu {
+  background-color: white;
+}
+
+.versionsubmenu {
+  background-color: white;
+  border-color: black;
+}
+
+
+
+
+
+.modal > .popupcontent {
+  max-height: 50vh;
+  overflow-y: auto;
+  width: 100%;
+  padding: 20px 20px;
+}
+
+.modal h1 {
+  font-size: large;
+  font-weight: bold;
+}
+
+.modal h2 {
+  text-decoration: underline;
+  margin-top: 5px;
+}
+
+>>>>>>> Stashed changes
