@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Pesterlog-Colorer-React/static/css/main.d42f4c3e.css",
-    "main.js": "/Pesterlog-Colorer-React/static/js/main.d49cc51e.js",
+    "main.js": "/Pesterlog-Colorer-React/static/js/main.53e20401.js",
     "static/js/787.e9b9c869.chunk.js": "/Pesterlog-Colorer-React/static/js/787.e9b9c869.chunk.js",
     "index.html": "/Pesterlog-Colorer-React/index.html",
     "main.d42f4c3e.css.map": "/Pesterlog-Colorer-React/static/css/main.d42f4c3e.css.map",
-    "main.d49cc51e.js.map": "/Pesterlog-Colorer-React/static/js/main.d49cc51e.js.map",
+    "main.53e20401.js.map": "/Pesterlog-Colorer-React/static/js/main.53e20401.js.map",
     "787.e9b9c869.chunk.js.map": "/Pesterlog-Colorer-React/static/js/787.e9b9c869.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d42f4c3e.css",
-    "static/js/main.d49cc51e.js"
+    "static/js/main.53e20401.js"
   ]
 }
