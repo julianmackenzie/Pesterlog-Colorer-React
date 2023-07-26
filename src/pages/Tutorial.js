@@ -16,25 +16,6 @@ function QuitButton() {
 
 
 
-/*
-cout << endl << endl << endl << endl << endl << endl << "--- PESTERLOG FORMATTING HELP ---" << endl << endl << "The .txt file that you provide should follow Homestuck's pesterlog format." << endl << endl
-    << "Here is a template of how this should look." << endl << endl << endl
-    << "-- firstHandle [XX] began pestering secondHandle [YY] --" << endl << endl
-    << "XX: this is the first line of dialog" << endl
-    << "XX: this is the second line of dialog" << endl
-    << "YY: this is the third line of dialog" << endl
-    << "XX: this is the fourth line of dialog" << endl << endl
-    << "-- firstHandle [XX] ceased pestering secondHandle [YY] --" << endl << endl << endl
-    << "The header and footer are optional (and shouldn't be used when logs involve more than 2 characters) but must be in the proper format if included." << endl << endl
-    << "\"firstHandle\" and \"secondHandle\" are the chumhandles of your characters." << endl
-    << "They are generally a lowercase word followed by a word with an uppercase first letter, with no space between, like \"gardenGnostic\" or \"tentacleTherapist\"." << endl << endl
-    << "More importantly, XX and YY are the shortened chumhandles, the first letter of each word in the chumhandle capitalized." << endl
-    << "For example, if your chumhandle was turntechGodhead, you would put TG in place of XX." << endl << endl
-    << "The actual header and footer can technically contain anything as long as [XX] and [YY] are present (the [] is what is checked for)\nand as long as they begin and end with a \"--\"." << endl
-    << "Each line of dialog needs to begin with XX or YY, and XX and YY must be different." << endl
-    << "If two characters have the same abbreviation, choose one and replace all instances of theirs with a unique placeholder, then change it back after processing." << endl << endl << endl;
-
-*/
 
 export default function Tutorial() {
   return (
@@ -77,7 +58,7 @@ export default function Tutorial() {
           </button>
         </a>
 
-        <h2 className>Character data import:</h2>
+        <h2>Character data import:</h2>
   
         <div>
           <h3>
