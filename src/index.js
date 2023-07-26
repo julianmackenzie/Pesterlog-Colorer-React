@@ -14,6 +14,7 @@ import Tutorial from './pages/Tutorial';
 import Version from './components/Version';
 
 
+let basename = window.location.hostname == "github.io" ? "/Pesterlog-Colorer-React/" : "/";  // Assign subdirectory based on if it's on deployment or local
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,9 @@ const router = createBrowserRouter([
     path: "/pages/Tutorial",
     element: [<Header key="header" />, <Tutorial key="bodyelem" />, <Version key="version" />],
   },
-]);
+], {
+  basename: basename
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
