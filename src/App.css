@@ -44,6 +44,9 @@ body {background-color: #2B234A;}
 
 
 
+
+
+
 #logbox {
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold;
@@ -63,7 +66,8 @@ body {background-color: #2B234A;}
 
 
 .versionbutton {
-  text-shadow: 2px 2px 2px #000000;
+  text-shadow: 1.1px 1.1px 1px black, 1.5px 1.5px 1px black, 2px 2px 1px black;
+  
 }
 
 .popup-content {
@@ -79,11 +83,12 @@ body {background-color: #2B234A;}
   cursor: pointer;
   position: absolute;
   display: block;
-  padding: 6px 8px 10px 8px;
+  padding: 6px 7px 11px 8px;
   line-height: 20px;
-  right: -10px;
-  top: -10px;
+  right: -11px;
+  top: -11px;
   font-size: xx-large;
+  font-weight: 300;
 }
 
 .modal > .popupheader {
@@ -97,7 +102,7 @@ body {background-color: #2B234A;}
 
 .modal > .popupcontent {
   max-height: 50vh;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 100%;
   padding: 20px 20px;
 }

@@ -20,7 +20,7 @@ import '../App.css';
 function QuitButton() {
   return (
     <Link to='../'>
-      <button className="bg-gentle-600 text-white py-4 px-10 my-16 text-xl rounded-full border-4 border-gentle-500">Quit Processing</button>
+      <button className="bg-gentle-600 text-white py-4 px-10 my-10 text-xl rounded-full border-4 border-gentle-500">Quit Processing</button>
     </Link>
   );
 }
@@ -352,7 +352,7 @@ export default function Process() {
 
 
         {txtArray.length > 0 && (
-          <div id="logbox" className="bg-gray-200 mt-8 max-h-80 overflow-y-scroll" >
+          <div id="logbox" className="bg-gray-200 mt-8 max-h-80 overflow-y-auto">
             {coloredTxtArray.map((line, index) => (
             <p key={index} style={{color: characterColor[(line.character)] ?? "#000"}} dangerouslySetInnerHTML={{__html: processHeader(line.dialogue)}} />
             ))}
@@ -363,12 +363,12 @@ export default function Process() {
 
 
         <div>
-          <button className="bg-mountain-meadow-400 text-white py-1 px-5 my-10 mx-10 text-xl rounded-full border-4 border-mountain-meadow-500" onClick={() => openCharacterSelector()}>Import Character Data</button>
+          <button className="bg-mountain-meadow-400 text-white py-1 px-5 mt-10 mb-3 mx-10 text-xl rounded-full border-4 border-mountain-meadow-500" onClick={() => openCharacterSelector()}>Import Character Data</button>
           <button onClick={() => exportCharData(charArray)} className="bg-red-500 text-white py-1 px-5 mx-10 text-xl rounded-full border-4 border-red-600">Export Character Data</button>
         </div>
 
         <div>
-          <div className="inline-block bg-gentle-700 p-1 rounded-2xl border-4 border-gentle-500">
+          <div className="inline-block bg-gentle-700 p-1 mb-3 mt-5 rounded-2xl border-4 border-gentle-500">
             <input id="taginput" type="text" placeholder="Tag" className="mr-1 w-8 text-center rounded-lg" maxLength={2} />
             <input id="colorinput" type="text" placeholder="Color Hex" className="mx-1 w-28 pl-1 rounded-lg" maxLength={7} data-coloris />
             <input id="nameinput" placeholder="chumHandle" type="text" className="ml-1 px-1 rounded-lg" />
@@ -385,7 +385,7 @@ export default function Process() {
 
 
         {charArray.length > 0 && (
-          <div id="charbox" className="bg-gray-200 mt-8 max-h-80 overflow-y-scroll" >
+          <div id="charbox" className="bg-gray-200 mt-8 max-h-80 overflow-y-auto">
             {charArray.map((line, index) => (
               <p style={{color: line[1]}} key={index}>{"["+ line[0] + "] " + line[2]}</p>
             ))}
@@ -395,7 +395,7 @@ export default function Process() {
 
 
         <div>
-          <button onClick={() => exportLog(txtArray)} className="bg-gentle-600 text-white py-1 px-3 my-10 text-xl rounded-full border-4 border-gentle-500">Export Pesterlog</button>
+          <button onClick={() => exportLog(txtArray)} className="bg-gentle-600 text-white py-1 px-3 my-20 text-xl rounded-full border-4 border-gentle-500">Export Pesterlog</button>
         </div>
 
 
