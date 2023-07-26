@@ -53,11 +53,6 @@ body {background-color: #2B234A;}
 }
 
 
-
-
-
-
-
 /*
 
   Popup styling
@@ -72,7 +67,10 @@ body {background-color: #2B234A;}
 
 .popup-content {
   background: transparent !important;
+  padding: 0px !important;
   border: transparent !important;
+  width: fit-content !important;
+  max-width: 90% !important;
 }
 
 .modal {
@@ -100,6 +98,26 @@ body {background-color: #2B234A;}
   padding-bottom: 10px;
 }
 
+
+.modal > .popupheader > .versionmenubutton {
+  margin-top: 15px;
+  line-height: 75%;
+}
+
+
+.versionmenu {
+  background-color: white;
+}
+
+.versionsubmenu {
+  background-color: white;
+  border-color: black;
+}
+
+
+
+
+
 .modal > .popupcontent {
   max-height: 50vh;
   overflow-y: auto;
@@ -108,6 +126,11 @@ body {background-color: #2B234A;}
 }
 
 .modal h1 {
-  font-size: x-large;
+  font-size: large;
   font-weight: bold;
+}
+
+.modal h2 {
+  text-decoration: underline;
+  margin-top: 5px;
 }
