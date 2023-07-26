@@ -17,6 +17,64 @@ function QuitButton() {
 
 
 
+var textFile = null,
+makeTextFile = function (text) {
+  var data = new Blob([text], {type: 'text/plain'});
+
+  // If we are replacing a previously generated file we need to
+  // manually revoke the object URL to avoid memory leaks.
+  if (textFile !== null) {
+    window.URL.revokeObjectURL(textFile);
+  }
+
+  textFile = window.URL.createObjectURL(data);
+
+  return textFile;
+};
+
+
+
+function exportLogTutorial() {
+
+  let toReturn = `-- gentleTranscendent [GT] began pestering tomboyGangster [TG] --\r
+\r
+TG: hey did you hear about that new tool\r
+TG: the one that does the bbcode color formatting for you\r
+GT: Yeah! I did, it seems like a real time saver.\r
+TG: yeah no shit\r
+TG: theres a lot of people that spend way too much time using MSPFA's clunky editor from the 90s to manually add character colors\r
+GT: Glad there's finally a good solution for that.\r
+\r
+-- tomboyGangster [TG] ceased pestering gentleTranscendent [GT] --`;
+
+
+  var link=document.createElement('a');
+    link.href = makeTextFile(toReturn);
+    link.download = "example_pesterlog.txt";
+    link.click();
+}
+
+
+
+function exportCharTutorial() {
+
+  let toReturn = `TT|#600505|traditionalTerror\r
+GT|#AF59FF|gentleTranscendent\r
+TG|#01C7FC|tomboyGangster\r
+GG|#4E7A27|guiltlessGraffiti`;
+
+
+  var link=document.createElement('a');
+    link.href = makeTextFile(toReturn);
+    link.download = "example_chardata.txt";
+    link.click();
+}
+
+
+
+
+
+
 export default function Tutorial() {
   return (
     <div className="App">
@@ -52,11 +110,11 @@ export default function Tutorial() {
         </div>
         
 
-        <a href="/example_log.txt" download>
-          <button className="bg-mountain-meadow-400 text-white py-1 px-5 my-10 mx-10 text-xl rounded-full border-4 border-mountain-meadow-500">
-            Download Example Input Log
-          </button>
-        </a>
+
+        <button onClick={() => exportLogTutorial()} className="bg-mountain-meadow-400 text-white py-1 px-5 my-10 mx-10 text-xl rounded-full border-4 border-mountain-meadow-500">
+          Download Example Input Log
+        </button>
+
 
         <h2>Character data import:</h2>
   
@@ -79,11 +137,11 @@ export default function Tutorial() {
           </h3>
         </div>
 
-        <a href="/example_chardata.txt" download>
-          <button className="bg-mountain-meadow-400 text-white py-1 px-5 my-10 mx-10 text-xl rounded-full border-4 border-mountain-meadow-500">
-            Download Example Input Character Data
-          </button>
-        </a>
+
+        <button onClick={() => exportCharTutorial()} className="bg-mountain-meadow-400 text-white py-1 px-5 my-10 mx-10 text-xl rounded-full border-4 border-mountain-meadow-500">
+          Download Example Input Character Data
+        </button>
+
         
         <div className="mb-10">
           <h3>
