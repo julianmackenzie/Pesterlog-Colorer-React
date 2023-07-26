@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Pesterlog-Colorer-React/static/css/main.bcff7efa.css",
+    "main.js": "/Pesterlog-Colorer-React/static/js/main.eaf5dfb6.js",
+    "static/js/787.e9b9c869.chunk.js": "/Pesterlog-Colorer-React/static/js/787.e9b9c869.chunk.js",
+    "index.html": "/Pesterlog-Colorer-React/index.html",
+    "main.bcff7efa.css.map": "/Pesterlog-Colorer-React/static/css/main.bcff7efa.css.map",
+    "main.eaf5dfb6.js.map": "/Pesterlog-Colorer-React/static/js/main.eaf5dfb6.js.map",
+    "787.e9b9c869.chunk.js.map": "/Pesterlog-Colorer-React/static/js/787.e9b9c869.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bcff7efa.css",
+    "static/js/main.eaf5dfb6.js"
+  ]
+}
