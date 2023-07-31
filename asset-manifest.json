@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Pesterlog-Colorer-React/static/css/main.d42f4c3e.css",
-    "main.js": "/Pesterlog-Colorer-React/static/js/main.53e20401.js",
+    "main.css": "/Pesterlog-Colorer-React/static/css/main.4b95cfa5.css",
+    "main.js": "/Pesterlog-Colorer-React/static/js/main.f3566305.js",
     "static/js/787.e9b9c869.chunk.js": "/Pesterlog-Colorer-React/static/js/787.e9b9c869.chunk.js",
     "index.html": "/Pesterlog-Colorer-React/index.html",
-    "main.d42f4c3e.css.map": "/Pesterlog-Colorer-React/static/css/main.d42f4c3e.css.map",
-    "main.53e20401.js.map": "/Pesterlog-Colorer-React/static/js/main.53e20401.js.map",
+    "main.4b95cfa5.css.map": "/Pesterlog-Colorer-React/static/css/main.4b95cfa5.css.map",
+    "main.f3566305.js.map": "/Pesterlog-Colorer-React/static/js/main.f3566305.js.map",
     "787.e9b9c869.chunk.js.map": "/Pesterlog-Colorer-React/static/js/787.e9b9c869.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d42f4c3e.css",
-    "static/js/main.53e20401.js"
+    "static/css/main.4b95cfa5.css",
+    "static/js/main.f3566305.js"
   ]
 }
