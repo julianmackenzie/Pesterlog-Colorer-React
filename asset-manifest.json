@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Pesterlog-Colorer-React/static/css/main.65b3a9d7.css",
-    "main.js": "/Pesterlog-Colorer-React/static/js/main.50c872b9.js",
-    "static/js/787.e9b9c869.chunk.js": "/Pesterlog-Colorer-React/static/js/787.e9b9c869.chunk.js",
-    "static/media/2023-08-11.md": "/Pesterlog-Colorer-React/static/media/2023-08-11.42ca300a54116b8ee8cb.md",
-    "index.html": "/Pesterlog-Colorer-React/index.html",
-    "static/media/2023-07-25.md": "/Pesterlog-Colorer-React/static/media/2023-07-25.b61bbb72af3a7e9893c8.md",
-    "static/media/2023-07-26.md": "/Pesterlog-Colorer-React/static/media/2023-07-26.b7d03c0e9e69943d9f88.md",
-    "main.65b3a9d7.css.map": "/Pesterlog-Colorer-React/static/css/main.65b3a9d7.css.map",
-    "main.50c872b9.js.map": "/Pesterlog-Colorer-React/static/js/main.50c872b9.js.map",
-    "787.e9b9c869.chunk.js.map": "/Pesterlog-Colorer-React/static/js/787.e9b9c869.chunk.js.map"
+    "main.css": "/PesterlogColorer/static/css/main.65b3a9d7.css",
+    "main.js": "/PesterlogColorer/static/js/main.355d0b70.js",
+    "static/js/787.e9b9c869.chunk.js": "/PesterlogColorer/static/js/787.e9b9c869.chunk.js",
+    "static/media/2023-08-11.md": "/PesterlogColorer/static/media/2023-08-11.42ca300a54116b8ee8cb.md",
+    "index.html": "/PesterlogColorer/index.html",
+    "static/media/2023-07-25.md": "/PesterlogColorer/static/media/2023-07-25.b61bbb72af3a7e9893c8.md",
+    "static/media/2023-07-26.md": "/PesterlogColorer/static/media/2023-07-26.b7d03c0e9e69943d9f88.md",
+    "main.65b3a9d7.css.map": "/PesterlogColorer/static/css/main.65b3a9d7.css.map",
+    "main.355d0b70.js.map": "/PesterlogColorer/static/js/main.355d0b70.js.map",
+    "787.e9b9c869.chunk.js.map": "/PesterlogColorer/static/js/787.e9b9c869.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.65b3a9d7.css",
-    "static/js/main.50c872b9.js"
+    "static/js/main.355d0b70.js"
   ]
 }
