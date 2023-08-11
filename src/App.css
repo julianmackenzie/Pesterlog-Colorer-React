@@ -106,12 +106,14 @@ body {background-color: #2B234A;}
 
 
 .versionmenu {
-  background-color: white;
+  background-color: #2B234A;
+  color: white;
+  border:#2B234A 2px;
 }
 
 .versionsubmenu {
-  background-color: white;
-  border-color: black;
+  background-color: #2B234A;
+  color: white;
 }
 
 
