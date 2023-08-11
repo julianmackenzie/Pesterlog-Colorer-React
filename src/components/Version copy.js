@@ -26,7 +26,26 @@ export default function Header() {
 
                 <div className="popupheader">
 
-                  Changelogs
+                <Popup trigger={<button className="versionmenubutton">Version<p>⌵</p></button>}
+                  position="bottom center" on="hover" closeOnDocumentClick mouseLeaveDelay={700}
+                  mouseEnterDelay={0} arrow={false} nested>
+                  
+
+                  
+                    <div className="versionmenu">
+                      <Popup trigger={<div className="menu-item">1.0.x</div>} position="right top" on="hover" 
+                      closeOnDocumentClick mouseLeaveDelay={700} mouseEnterDelay={0} arrow={false}>
+                        
+                        <div className="versionsubmenu">
+                          <div><button className="menu-item">1.0.0</button></div>
+                          <div><button className="menu-item">1.0.1</button></div>
+                        </div>
+                        
+                      </Popup>
+
+                    </div>
+                  
+                  </Popup>
 
                 </div>
                 
